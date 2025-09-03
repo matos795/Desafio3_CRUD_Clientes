@@ -28,4 +28,20 @@ public class ClientService {
         Client client = clientRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Recurso não encontrado"));
         return new ClientDTO(client);
     }
+
+    @Transactional
+    public ClientDTO insert(ClientDTO dto){
+        Client client = new Client();
+        setToDto(client, dto);
+        clientRepository.save(client);
+        return new ClientDTO(client);
+    }
+
+    private void setToDto(Client client, ClientDTO dto) {
+        client.setName(dto.getName());
+        client.setCpf(dto.getCpf());
+        client.setIncome(dto.getIncome());
+        client.setBirthDate(dto.getBirthDate());
+        client.setChildren(dto.getChildren());
+    }
 }
