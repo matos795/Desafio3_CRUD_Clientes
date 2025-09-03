@@ -39,7 +39,7 @@ public class ClientService {
 
     @Transactional
     public ClientDTO update(Long id, ClientDTO dto){
-        Client client = clientRepository.getReferenceById(id);
+        Client client = clientRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Recurso não encontrado"));
         setToDto(client, dto);
         clientRepository.save(client);
         return new ClientDTO(client);
