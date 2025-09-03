@@ -49,7 +49,6 @@ public class ClientService {
         client.setName(dto.getName());
         client.setCpf(dto.getCpf());
         client.setIncome(dto.getIncome());
-
         client.setBirthDate(dto.getBirthDate());
         client.setChildren(dto.getChildren());
     }
